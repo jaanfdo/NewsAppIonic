@@ -1,18 +1,19 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-button (click)="closeModal()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title>{{article.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
   <ion-card>
     <ion-item>
       <ion-img [src]="article.urlToImage"></ion-img>
     </ion-item>
-
     <ion-card-content>
       <ion-card-title>
         {{article.title}}
@@ -20,5 +21,4 @@
       <p>{{article.description}}</p>
     </ion-card-content>
   </ion-card>
-
 </ion-content>

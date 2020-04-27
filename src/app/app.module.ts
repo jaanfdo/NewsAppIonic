@@ -11,12 +11,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { NewsOneModelPageModule } from './news-one-model/news-one-model.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,
-    IonicStorageModule.forRoot()],
+    IonicStorageModule.forRoot(), NewsOneModelPageModule],
   providers: [
     StatusBar,
     SplashScreen,

@@ -8,15 +8,6 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        children: [
-          {
-            path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
-          }
-        ]
-      },
-      {
         path: 'news',
         children: [
           {
@@ -26,24 +17,33 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'tab3',
+        path: 'category',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../news-category/news-category.module#NewsCategoryPageModule'
+          }
+        ]
+      },
+      {
+        path: 'country',
+        children: [
+          {
+            path: '',
+            loadChildren: '../news-country/news-country.module#NewsCountryPageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/country',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/country',
     pathMatch: 'full'
   }
 ];
