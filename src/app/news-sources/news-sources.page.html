@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>News Sources</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let article of data?.sources" routerLink="/newssources/{{article.id}}/{{article.name}}">
+      <ion-item>
+        <!-- <ion-label text-wrap></ion-label>
+        <h2>{{article.name}}</h2>
+        <h3>{{article.language}}</h3>
+        <p>{{article.category}} {{article.country}}</p> -->
+        <div class="product-content">          
+          <div class="price">
+            <h3 class="title">{{article.name}}</h3>
+              <div style="display: inline-flex; top: 0px; right: 0px;">
+                <span>{{article.language}}</span>
+              <span>{{article.country}}</span>
+              </div>              
+          <p class="add-to-cart">{{article.category}}</p>
+          </div>
+      </div>
+      </ion-item>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -35,15 +35,42 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'category/:category',
+        children: [
+          {
+            path: '',
+            loadChildren: '../news-category/news-category.module#NewsCategoryPageModule'
+          }
+        ]
+      },
+      {
+        path: 'country/:country',
+        children: [
+          {
+            path: '',
+            loadChildren: '../news-country/news-country.module#NewsCountryPageModule'
+          }
+        ]
+      },
+      {
+        path: 'source',
+        children: [
+          {
+            path: '',
+            loadChildren: '../news-sources/news-sources.module#NewsSourcesPageModule'
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/tabs/country',
+        redirectTo: '/tabs/news',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/country',
+    redirectTo: '/tabs/news',
     pathMatch: 'full'
   }
 ];

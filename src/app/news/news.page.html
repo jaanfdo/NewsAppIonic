@@ -1,22 +1,102 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>News</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>News</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let article of data?.articles" (click)="NewsOne(article)">
-      <ion-item>
-        <ion-avatar slot="start">
-          <img [src]="article.urlToImage">
-        </ion-avatar>
-        <ion-label text-wrap>{{article.title}}</ion-label>
+  <ion-content>
+    <ion-list>
+      <ion-list-header lines="full">
+        <ion-label>News by Category</ion-label>
+        <ion-label routerLink="/tabs/category">See All <ion-icon name="arrow-forward-outline"></ion-icon></ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let article of category.slice(0,3)" routerLink="/tabs/category/{{article.id}}">
+        <ion-item>
+          <ion-label text-wrap>{{article.name}}</ion-label>
+        </ion-item>
       </ion-item>
-    </ion-item>
-  </ion-list>
+    </ion-list>
 
-  <!-- <ion-card *ngFor="let article of data?.articles" (click)="NewsOne(article)">
+    <ion-list>
+      <ion-list-header lines="full">
+        <ion-label>News by Country</ion-label>
+        <ion-label routerLink="/tabs/country">See All <ion-icon name="arrow-forward-outline"></ion-icon></ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let article of country.slice(0,3)" routerLink="/tabs/country/{{article.id}}">
+        <ion-item>
+          <ion-label text-wrap>{{article.name}}</ion-label>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header lines="full">
+        <ion-label>News by Sources</ion-label>
+        <ion-label routerLink="/tabs/source">See All <ion-icon name="arrow-forward-outline"></ion-icon></ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let article of sources?.sources.slice(0,3)" routerLink="/newssources/{{article.id}}">
+        <ion-item>
+          <ion-label text-wrap>{{article.name}}</ion-label>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+<!-- <ion-menu side="start" content-id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Filters</ion-title>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label>Inbox</ion-label>
+        
+        <ion-input placeholder="Enter Input"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="paper-plane" slot="start"></ion-icon>
+        <ion-label>Outbox</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="heart" slot="start"></ion-icon>
+        <ion-label>Favorites</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="archive" slot="start"></ion-icon>
+        <ion-label>Archived</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="trash" slot="start"></ion-icon>
+        <ion-label>Trash</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="warning" slot="start"></ion-icon>
+        <ion-label>Spam</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu> -->
+
+
+
+
+
+<!-- <ion-list>
+  <ion-item *ngFor="let article of data?.articles" (click)="NewsOne(article)">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img [src]="article.urlToImage">
+      </ion-avatar>
+      <ion-label text-wrap>{{article.title}}</ion-label>
+    </ion-item>
+  </ion-item>
+</ion-list> -->
+
+
+
+<!-- <ion-card *ngFor="let article of data?.articles" (click)="NewsOne(article)">
     <ion-item>
       <ion-img [src]="article.urlToImage"></ion-img>
     </ion-item>
@@ -28,5 +108,3 @@
       <p>{{article.description}}</p>
     </ion-card-content>
   </ion-card> -->
-
-</ion-content>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../news.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Country } from '../value';
+import { NewsOneModelPage } from '../news-one-model/news-one-model.page';
 
 @Component({
   selector: 'app-news-country',
@@ -10,20 +12,49 @@ import { ModalController } from '@ionic/angular';
 })
 export class NewsCountryPage implements OnInit {
   data: any;
-  constructor(private newsService: NewsService, private router: Router, public modalController: ModalController) { }
+  country: any;
+  onecountry: any;
+  defaultFilter: any;
+  constructor(private newsService: NewsService, private router: Router, private _Avroute: ActivatedRoute,
+    public modalController: ModalController) {
+    this.country = Country;
+    let id = this._Avroute.snapshot.paramMap.get('country');
+    if (id !== null && id !== undefined && id !== '') {
+      this.defaultFilter = id;
+      this.GetNews(id);
+    } else {
+      id = this.country[0]['id'];
+      this.defaultFilter = id;
+      this.GetNews(id);
+    }
+  }
 
 
   ngOnInit() {
+
+  }
+  OnChange(event) {
+    //alert("You are selected : " + event.target.value);
+    this.GetNews(event.target.value);
+  }
+  GetNews(item: any) {
+    //this.countryTitle = item.name;
+    this.onecountry = this.country.filter(p => p.id.indexOf(item) >= 0)[0];
     this.newsService
-      .data('top-headlines?country=us')
+      .data('top-headlines?country=' + item)
       .subscribe(data => {
         console.log(data);
         this.data = data;
       });
   }
 
-  NewsOne(article) {
-    this.newsService.currentArticle = article;
-    this.router.navigate(['/news-one']);
+  async NewsOne(article) {
+    const modal = await this.modalController.create({
+      component: NewsOneModelPage,
+      componentProps: {
+        'article': article,
+      }
+    });
+    return await modal.present();
   }
 }

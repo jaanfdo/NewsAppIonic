@@ -17,6 +17,8 @@ export class AppComponent {
     this.initializeApp();
   }
 
+  menuTitle: any;
+  
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();

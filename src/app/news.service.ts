@@ -15,4 +15,8 @@ export class NewsService {
   data(url) {
     return this.http.get(API_URL + '/' + url + '&apiKey=' + API_KEY);
   }
+
+  sourcedata(url) {
+    return this.http.get(API_URL + '/' + url + '?apiKey=' + API_KEY);
+  }
 }
